@@ -1,0 +1,30 @@
+{
+  "name": "vue-microservice",
+  "version": "0.1.0",
+  "description": "vue3微前端 乾坤",
+  "scripts": {
+    "i:all": "npm run i:portal && npm run i:sub-app1 && npm run i:sub-app2 && npm run i:sub-app3",
+    "ci:all": "npm run ci:portal && npm run ci:sub-app1 && npm run ci:sub-app2 && npm run ci:sub-app3",
+    "dev:all": "concurrently \"npm run dev:portal\" \"npm run dev:sub-app1\" \"npm run dev:sub-app2\" \"npm run start:sub-app3\"",
+    "build:all": "concurrently \"npm run build:portal\" \"npm run build:sub-app1\" \"npm run build:sub-app2\" \"npm run build:sub-app3\"",
+    "i:portal": "cd portal && npm  install",
+    "i:sub-app1": "cd sub-app1 && npm install",
+    "i:sub-app2": "cd sub-app2 && npm install",
+    "i:sub-app3": "cd sub-app3 && npm install",
+    "ci:portal": "cd portal && npm --registry https://registry.npm.taobao.org install",
+    "ci:sub-app1": "cd sub-app1 && npm --registry https://registry.npm.taobao.org install",
+    "ci:sub-app2": "cd sub-app2 && npm --registry https://registry.npm.taobao.org install",
+    "ci:sub-app3": "cd sub-app3 && npm --registry https://registry.npm.taobao.org install",
+    "dev:portal": "cd portal && npm run start",
+    "dev:sub-app1": "cd sub-app1 && npm run start",
+    "dev:sub-app2": "cd sub-app2 && npm run start",
+    "dev:sub-app3": "cd sub-app3 && npm run start",
+    "build:portal": "cd portal && npm run build",
+    "build:sub-app1": "cd sub-app1 && npm run build",
+    "build:sub-app2": "cd sub-app2 && npm run build",
+    "build:sub-app3": "cd sub-app3 && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
