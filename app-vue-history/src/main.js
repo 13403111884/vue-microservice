@@ -25,13 +25,11 @@ function render({ container } = {}) {
   }).$mount(container ? container.querySelector('#appVueHistory') : '#appVueHistory');
 }
 
-if (!window.__POWERED_BY_QIANKUN__) {
-  render();
-}
+window.__POWERED_BY_QIANKUN__ || render()
 //测试全局变量污染
 window.a = 1;
-export async function bootstrap() {
-  console.log('vue app bootstraped');
+export async function bootstrap(props = {}) {
+  console.log('vue app bootstrap', props);
 }
 
 export async function mount(props) {

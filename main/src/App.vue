@@ -1,11 +1,16 @@
 <template>
   <div class="box">
     <header>
-      <router-link style="margin-left: 20px" to="/app-vue-hash/">app-vue-hash</router-link>
-      <router-link style="margin-left: 20px" to="/app-vue-history/">app-vue-history</router-link>
-      <router-link style="margin-left: 20px" to="/about">about</router-link>
+      <router-link style="margin-left: 20px" to="/app-vue-hash">app-vue-hash</router-link>
+      <router-link style="margin-left: 20px" to="/app-vue-hash/about">app-vue-hash/about</router-link>
+      <router-link style="margin-left: 20px" to="/app-vue-history">app-vue-history</router-link>
+      <router-link style="margin-left: 20px" to="/app-vue-history/about">app-vue-history/about</router-link>
+      <router-link style="margin-left: 20px" to="/app-vue-history">app-vue-history</router-link>
+      <router-link style="margin-left: 20px" to="/Setting">Setting</router-link>
+      <router-link style="margin-left: 20px" to="/">Home</router-link>
     </header>
     <p>路由：{{ routeName }}</p>
+    <router-view/>
     <div id="appContainer"></div>
   </div>
 </template>
@@ -26,8 +31,9 @@ export default {
     routeName.value = ctx.$router.currentRoute.value.name
 
     watch(
-      () => ctx.$router.currentRoute.value.name,
+      () => ctx.$router.currentRoute.value,
       () => {
+        console.log(ctx.$router.currentRoute.value)
         routeName.value = ctx.$router.currentRoute.value.name
       }
     )

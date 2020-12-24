@@ -12,7 +12,9 @@ let instance = null;
 
 function render({ data = {} , container } = {}) {
   router = new VueRouter({
-    routes,
+    base: window.__POWERED_BY_QIANKUN__ ? '/app-vue-hash' : '/',
+    mode: 'history',
+    routes
   });
   instance = new Vue({
     router,
