@@ -20,16 +20,16 @@ registerMicroApps([
     href: '/app-vue-hash',
     entry: 'http://localhost:1111',
     container: '#appContainer',
-    activeRule: location => location.pathname.startsWith('/app-vue-hash'), 
-    props: { data : { store, router } }
+    activeRule: '/app-vue-hash', 
+    props: { appData: { store, router, base: '/app-vue-hash' } }
   },
   { 
     name: 'app-vue-history',
     href: '/app-vue-history',
     entry: 'http://localhost:2222', 
     container: '#appContainer',
-    activeRule: location => location.pathname.startsWith('/app-vue-history'),
-    props: { data : { store, router } }
+    activeRule: '/app-vue-history',
+    props: { appData: { store, router, base: '/app-vue-history' } }
   },
 ],{
   beforeLoad: [app => console.log('加载前', app)],

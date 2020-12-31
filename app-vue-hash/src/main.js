@@ -10,9 +10,9 @@ Vue.config.productionTip = false;
 let router = null;
 let instance = null;
 
-function render({ data = {} , container } = {}) {
+function render({ appData = {} , container } = {}) {
   router = new VueRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? '/app-vue-hash' : '/',
+    base: window.__POWERED_BY_QIANKUN__ ? appData.base : '/',
     mode: 'history',
     routes
   });
@@ -21,12 +21,13 @@ function render({ data = {} , container } = {}) {
     store,
     data(){
       return {
-        parentRouter: data.router,
-        parentVuex: data.store,
+        parentRouter: appData.router,
+        parentVuex: appData.store,
       }
     },
     render: h => h(App),
-  }).$mount(container ? container.querySelector('#appVueHash') : '#appVueHash');
+  }).$mount('#appVueHash');
+  console.log('instance', instance)
 }
 
 if (!window.__POWERED_BY_QIANKUN__) {

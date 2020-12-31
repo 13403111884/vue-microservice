@@ -7,16 +7,16 @@
     "install:hash": "cd app-vue-hash && npm --registry https://registry.npm.taobao.org install",
     "install:history": "cd app-vue-history && npm --registry https://registry.npm.taobao.org install",
     "install:main": "cd main && npm --registry https://registry.npm.taobao.org install",
-    "install-all": "npm-run-all install:*",
+    "install": "npm-run-all --serial install:*",
     "start:hash": "cd app-vue-hash && npm run serve ",
     "start:history": "cd app-vue-history && npm run serve",
     "start:main": "cd main && npm run dev",
-    "start-all": "npm-run-all --parallel start:*",
-    "serve-all": "npm-run-all --parallel start:*",
+    "start": "npm-run-all --parallel start:*",
+    "serve": "npm-run-all --parallel start:*",
     "build:hash": "cd app-vue-hash && npm run build",
     "build:history": "cd app-vue-history && npm run build",
     "build:main": "cd main && npm run build",
-    "build-all": "npm-run-all --parallel build:*"
+    "build": "npm-run-all --parallel build:*"
   },
   "repository": {
     "type": "git",
