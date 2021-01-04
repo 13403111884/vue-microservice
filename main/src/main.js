@@ -1,18 +1,19 @@
-import { createApp } from 'vue'
-import router from "./router";
-import store from "./store";
-import App from './App.vue'
-import API from './api'
-import './assets/index.css'
+
+import './public-path';
+import Vue from 'vue';
+import router from './router';
+import store from './store';
+import App from './App';
 
 import { registerMicroApps, start } from 'qiankun'
 
-createApp(App).use({
-  install: (vue) => {
-    vue.config.productionTip = false
-    vue.config.globalProperties.api = API
-  }
-}).use(router).use(store).mount('#app')
+Vue.config.productionTip = false;
+
+new Vue({
+  router,
+  store,
+  render: h => h(App),
+}).$mount('#app')
 
 registerMicroApps([
   { 

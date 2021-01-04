@@ -10,7 +10,7 @@
     "install": "npm-run-all --serial install:*",
     "start:hash": "cd app-vue-hash && npm run serve ",
     "start:history": "cd app-vue-history && npm run serve",
-    "start:main": "cd main && npm run dev",
+    "start:main": "cd main && npm run serve",
     "start": "npm-run-all --parallel start:*",
     "serve": "npm-run-all --parallel start:*",
     "build:hash": "cd app-vue-hash && npm run build",

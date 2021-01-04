@@ -21,8 +21,8 @@ export default {
   },
   methods: {
     goToPage(path){
-      console.log(this.$root.parentRouter);
-      this.$root.parentRouter.push(path);
+      // console.log(this.$root.parentRouter);
+     this.$root.parentRouter.push(path);
     }
   },
 }
