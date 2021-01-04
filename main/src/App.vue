@@ -9,8 +9,8 @@
       <router-link style="margin-left: 20px" to="/Setting">Setting</router-link>
       <router-link style="margin-left: 20px" to="/">Home</router-link>
     </header>
-    <div id="appContainer"></div>
-    <router-view/>
+    <router-view v-if="!$route.path.includes('app-')" />
+    <div v-else id="appContainer"></div>
   </div>
 </template>
 
