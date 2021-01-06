@@ -1,7 +1,3 @@
-# app-vue-history
-
-history模式路由的子项目
-
 ## Project setup
 ```
 npm install

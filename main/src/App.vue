@@ -5,10 +5,10 @@
       <router-link style="margin-left: 20px" to="/app-vue-hash/about">app-vue-hash/about</router-link>
       <router-link style="margin-left: 20px" to="/app-vue-history">app-vue-history</router-link>
       <router-link style="margin-left: 20px" to="/app-vue-history/about">app-vue-history/about</router-link>
-      <router-link style="margin-left: 20px" to="/app-vue-history">app-vue-history</router-link>
-      <router-link style="margin-left: 20px" to="/Setting">Setting</router-link>
+      <router-link style="margin-left: 20px" to="/about">about</router-link>
       <router-link style="margin-left: 20px" to="/">Home</router-link>
     </header>
+    {{$store.getters.parent}}
     <router-view v-if="!$route.path.includes('app-')" />
     <div v-else id="appContainer"></div>
   </div>

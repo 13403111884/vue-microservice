@@ -11,10 +11,15 @@ export default new Vuex.Store({
   },
   mutations: {
     setCommonData(state, val){
-      state.commonData = val;
+      state.commonData.parent = val.parent
     }
   },
   actions: {
+  },
+  getters: {
+    parent (state) {
+      return state.commonData.parent
+    }
   },
   modules: {
   }
