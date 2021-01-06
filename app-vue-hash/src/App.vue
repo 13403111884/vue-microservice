@@ -1,13 +1,8 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <p>a链接跳转到主项目/其他子项目的页面，页面会刷新，效果不好<a href="/about">parent About</a></p>
-      <p v-if="isQiankun">
-        主项目把router传给子项目，子项目用这个router来跳转
-        <span @click="goToPage('/about')">parent About</span>
-        <span @click="goToPage('/app-vue-history/about')">app-vue-history About</span>
-      </p>
-    </div>
+    <p v-if="isQiankun">
+      <span @click="$appRoutePush('/app-vue-history/about')">app-vue-history About</span>
+    </p>
     <router-view/>
   </div>
 </template>
@@ -19,12 +14,7 @@ export default {
       isQiankun: window.__POWERED_BY_QIANKUN__,
     }
   },
-  methods: {
-    goToPage(path){
-      // console.log(this.$root.parentRouter);
-     this.$root.parentRouter.push(path);
-    }
-  },
+  methods: {},
 }
 </script>
 

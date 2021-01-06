@@ -10,38 +10,40 @@ Vue.config.productionTip = false;
 let router = null;
 let instance = null;
 
-function render({ appData = {} , container } = {}) {
+function render(appData = {}) {
+  console.log('window.__POWERED_BY_QIANKUN__', window.__POWERED_BY_QIANKUN__)
   router = new VueRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? appData.base : '/',
+    base: window.__POWERED_BY_QIANKUN__ ? `/${appData.name}` : '/',
     mode: 'history',
     routes
   });
+  Vue.mixin({
+    data(){
+      return {}
+    },
+    computed: {
+      $appVuex: () => appData.store,
+      $appVuexGetters: () => appData.store.getters.parent
+    },
+    methods: {
+      $appRoutePush (params) {
+        appData.router.push(params)
+      }
+    },
+  })
   instance = new Vue({
     router,
     store,
-    data(){
-      return {
-        parentRouter: appData.router,
-        parentVuex: appData.store,
-      }
-    },
     render: h => h(App),
   }).$mount('#appVueHash');
-  console.log('instance', instance)
 }
 
-if (!window.__POWERED_BY_QIANKUN__) {
-  render();
-}
-//测试全局变量污染
-console.log('window.a',window.a)
-
-export async function bootstrap() {
-  console.log('vue app bootstraped');
+window.__POWERED_BY_QIANKUN__ || render()
+export async function bootstrap(props = {}) {
+  console.log('vue app bootstraped', props);
 }
 
 export async function mount(props) {
-  console.log('props from main framework', props.data);
   render(props);
 }
 

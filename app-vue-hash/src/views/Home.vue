@@ -1,8 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" >
-    <span v-if="isQiankun" @click="changeParentState">主项目的数据：{{ commonData.parent }},点击变为2</span>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <span @click="changeParentState">主项目的数据：{{ $appVuexGetters }},点击变为2</span>
   </div>
 </template>
 
@@ -21,17 +20,13 @@ export default {
     }
   },
   computed: {
-    commonData(){
-      return this.isQiankun ? this.$root.parentVuex.state.commonData : '';
-    }
+    parent: () => $appVuex.state.commonData.parent
   },
-  mounted() {
-    console.log('app-vue-hash Home.vue mounted')
-  },
+  mounted() {},
   methods: {
     changeParentState(){
       if(this.isQiankun){
-        this.$root.parentVuex.commit('setCommonData', { parent: 2 });
+        this.$appVuex.commit('setCommonData', { parent: 2 });
       }
     }
   },
