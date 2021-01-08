@@ -1,6 +1,6 @@
 export default {
   beforeLoad: [app => {
-    console.log('加载前', app)
+    // console.log('加载前', app)
   }],
   beforeMount: [app => {
     // console.log('挂载前', app)

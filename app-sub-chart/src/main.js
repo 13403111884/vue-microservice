@@ -11,19 +11,14 @@ let router = null;
 let instance = null;
 
 function render(props = {}) {
-  console.log('window.__POWERED_BY_QIANKUN__', window.__POWERED_BY_QIANKUN__, props.name)
   router = new VueRouter({
     base: window.__POWERED_BY_QIANKUN__ ? `/${props.name}` : '/',
     mode: 'history',
     routes,
   });
-  Vue.prototype.$onGlobalStateChange = props.onGlobalStateChange
-  Vue.prototype.$setGlobalState = props.setGlobalState
+  Vue.prototype.$appData = Vue.observable(props.$appData)
+  Vue.prototype.$appVuex = props.store
   Vue.mixin({
-    mounted () {},
-    created: function () {
-      this['$appVuex'] = props.store
-    },
     methods: {
       $appRoutePush (params) {
         props.router.push(params)

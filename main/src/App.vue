@@ -19,10 +19,10 @@
 export default {
   methods: {
     setState () {
-      this.$setGlobalState({parent: this.$appData.parent-1})
+      this.$appData.parent = this.$appData.parent-1
     },
     setStateA () {
-      this.$setGlobalState({a: this.$appData.parent})
+      this.$appData.a = this.$appData.parent
     }
   },
 }

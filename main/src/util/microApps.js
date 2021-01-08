@@ -1,10 +1,11 @@
 import vue from 'vue';
-import { registerMicroApps, start, initGlobalState  } from 'qiankun'
+import { registerMicroApps, start } from 'qiankun'
 import { appInfo } from '../config/url'
 import lifeCycles from './lifeCycles'
 const container = '#appContainer'
 const initialState = vue.observable({
-  parent: 0
+  parent: 0,
+  a: 0
 })
 
 const getEntry = (url, prefix) => {
@@ -21,6 +22,7 @@ const getEntry = (url, prefix) => {
 
 const microApps = (props = {}) => {
   props.Vue.prototype.$appData = initialState
+  props.$appData = initialState
   const apps = appInfo.map(item => {
     const route = `/${item.name}`
     item.activeRule = route
@@ -31,14 +33,6 @@ const microApps = (props = {}) => {
   })
 
   registerMicroApps(apps, lifeCycles)
-
-  const actions = initGlobalState(initialState)
-  actions.onGlobalStateChange((state, prev) => {
-    Object.keys(state).forEach(key => {
-      initialState[key] = state[key]
-    })
-  })
-  actions.setGlobalState({parent: 1})
 
   // setDefaultMountApp('app-sbu-a')
   
@@ -51,7 +45,7 @@ const microApps = (props = {}) => {
     // }
   })
 
-  return actions
+  // return actions
 }
 
 export default microApps 
