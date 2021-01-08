@@ -7,10 +7,12 @@ import microApps from './util/microApps'
 
 Vue.config.productionTip = false;
 
+const actions = microApps({ store, router, Vue })
+Vue.prototype.$onGlobalStateChange = actions.onGlobalStateChange
+Vue.prototype.$setGlobalState = actions.setGlobalState
+
 new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
-
-microApps({ store, router })
+}).$mount('#appMain')

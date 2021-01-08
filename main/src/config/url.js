@@ -1,11 +1,11 @@
 export const appInfo = [
   { 
-    name: 'app-vue-hash',
+    name: 'app-sub-user',
     dev: 'http://localhost:1111'
   },
   { 
-    name: 'app-vue-history',
-    dev: 'http://localhost:2222'
+    name: 'app-sub-chart',
+    dev: 'http://localhost:2680'
   },
 ]
 

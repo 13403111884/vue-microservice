@@ -5,20 +5,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    commonData: {
+    appData: {
       parent: 1
     },
+    parent: 1
   },
   mutations: {
     setCommonData(state, val){
-      state.commonData.parent = val.parent
+      state.appData.parent = val.parent
     }
   },
   actions: {
   },
   getters: {
     parent (state) {
-      return state.commonData.parent
+      return state.appData.parent
     }
   },
   modules: {

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" >
-    <span @click="changeParentState">主项目的数据：{{ $appVuexGetters }},点击变为2</span>
+    <span @click="changeParentState">主项目的数据：{{appData.parent}},点击++</span>
   </div>
 </template>
 
@@ -16,17 +16,23 @@ export default {
   },
   data() {
     return {
+      appData: {
+        parent: 0
+      },
       isQiankun: window.__POWERED_BY_QIANKUN__,
     }
   },
-  computed: {
-    parent: () => $appVuex.state.commonData.parent
+  mounted() {
+    this.$onGlobalStateChange((state, prev) => {
+      Object.keys(state).forEach(key => {
+        this.appData[key] = state[key]
+      })
+    })
   },
-  mounted() {},
   methods: {
     changeParentState(){
       if(this.isQiankun){
-        this.$appVuex.commit('setCommonData', { parent: 2 });
+        this.$setGlobalState({parent: this.appData.parent+1})
       }
     }
   },

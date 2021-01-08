@@ -10,22 +10,23 @@ Vue.config.productionTip = false;
 let router = null;
 let instance = null;
 
-function render(appData = {}) {
-  console.log('appDataappDataappDataappData', appData)
+function render(props = {}) {
+  console.log('window.__POWERED_BY_QIANKUN__', window.__POWERED_BY_QIANKUN__, props.name)
   router = new VueRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? `/${appData.name}` : '/',
+    base: window.__POWERED_BY_QIANKUN__ ? `/${props.name}` : '/',
     mode: 'history',
-    routes,
+    routes
   });
+  Vue.prototype.$onGlobalStateChange = props.onGlobalStateChange
+  Vue.prototype.$setGlobalState = props.setGlobalState
   Vue.mixin({
-    data(){
-      return {
-        $appVuex: appData.store,
-      }
+    mounted () {},
+    created () {
+      this['$appVuex'] = props.store
     },
     methods: {
       $appRoutePush (params) {
-        appData.router.push(params)
+        props.router.push(params)
       }
     },
   })
@@ -33,12 +34,12 @@ function render(appData = {}) {
     router,
     store,
     render: h => h(App),
-  }).$mount('#appVueHistory');
+  }).$mount('#appSubA');
 }
 
 window.__POWERED_BY_QIANKUN__ || render()
 export async function bootstrap(props = {}) {
-  console.log('vue app bootstrap', props);
+  console.log('vue app bootstraped', props);
 }
 
 export async function mount(props) {
@@ -46,8 +47,8 @@ export async function mount(props) {
 }
 
 export async function unmount() {
-  instance.$destroy()
-  instance.$el.innerHTML = ""
-  instance = null
-  router = null
+  instance.$destroy();
+  instance.$el.innerHTML = "";
+  instance = null;
+  router = null;
 }

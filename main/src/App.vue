@@ -1,18 +1,32 @@
 <template>
   <div id="app">
     <header>
-      <router-link style="margin-left: 20px" to="/app-vue-hash">app-vue-hash</router-link>
-      <router-link style="margin-left: 20px" to="/app-vue-hash/about">app-vue-hash/about</router-link>
-      <router-link style="margin-left: 20px" to="/app-vue-history">app-vue-history</router-link>
-      <router-link style="margin-left: 20px" to="/app-vue-history/about">app-vue-history/about</router-link>
+      <router-link style="margin-left: 20px" to="/app-sub-user">app-sbu-a</router-link>
+      <router-link style="margin-left: 20px" to="/app-sub-user/about">app-sbu-a/about</router-link>
+      <router-link style="margin-left: 20px" to="/app-sub-chart">app-sbu-b</router-link>
+      <router-link style="margin-left: 20px" to="/app-sub-chart/about">app-sbu-b/about</router-link>
       <router-link style="margin-left: 20px" to="/about">about</router-link>
       <router-link style="margin-left: 20px" to="/">Home</router-link>
     </header>
-    {{$store.getters.parent}}
-    <router-view v-if="!$route.path.includes('app-')" />
+    <button @click="setState">全局数据点击--</button><button @click="setStateA">全局数据增加a，并把点击变得的数据赋值给a</button>
+    {{$appData.parent}}
+    <router-view v-if="!$route.path.includes('app-sub-')" />
     <div v-else id="appContainer"></div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    setState () {
+      this.$setGlobalState({parent: this.$appData.parent-1})
+    },
+    setStateA () {
+      this.$setGlobalState({a: this.$appData.parent})
+    }
+  },
+}
+</script>
 
 <style>
 #app {

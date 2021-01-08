@@ -1,13 +1,12 @@
 <template>
   <div class="about">
-    <h1>This is app-vue-history about page</h1>
+    <h1>This is app-sub-chart about page</h1>
   </div>
 </template>
 <script>
 export default {
   mounted() {
     window.a = 1;
-    console.log(window.a,'app-vue-history');
   },
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="appSubA">
     <p v-if="isQiankun">
-      <span @click="$appRoutePush('/app-vue-history/about')">app-vue-history About</span>
+      <span @click="$appRoutePush('/app-sub-chart/about')">app-sub-chart About</span>
     </p>
     <router-view/>
   </div>
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style>
-#app {
+#appSubA {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
