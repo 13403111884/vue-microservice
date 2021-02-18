@@ -34,7 +34,9 @@ function render(props = {}) {
 
 window.__POWERED_BY_QIANKUN__ || render()
 export async function bootstrap(props = {}) {
-  console.log('vue app bootstraped', props);
+  props.modules && Object.keys(props.modules).forEach(key => {
+    Vue.component(`user-${key}`, props.modules[key])
+  })
 }
 
 export async function mount(props) {

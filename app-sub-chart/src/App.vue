@@ -2,6 +2,7 @@
   <div id="app">
     <router-link to="/" >首页</router-link>
     <router-link :to="{ name: 'uuuuuuuu' }" >关于</router-link>
+    <chart-main-bbb></chart-main-bbb>
     <a @click="$appRoutePush({ name: 'oooooo' })" >父级关于</a>
     <router-view/>
   </div>

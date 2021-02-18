@@ -5,7 +5,7 @@ export const appInfo = [
   },
   { 
     name: 'app-sub-chart',
-    dev: 'http://localhost:2680'
+    dev: 'http://localhost:2222'
   },
 ]
 

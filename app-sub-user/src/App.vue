@@ -2,6 +2,7 @@
   <div id="appSubA">
     <p v-if="isQiankun">
       <span @click="$appRoutePush('/app-sub-chart/about')">app-sub-chart About</span>
+      <user-main-aaa></user-main-aaa>
     </p>
     <router-view/>
   </div>

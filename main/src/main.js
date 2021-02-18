@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import App from './App';
 import microApps from './util/microApps'
+import mainArr from './layout'
 
 Vue.config.productionTip = false;
 
